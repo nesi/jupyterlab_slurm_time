@@ -61,15 +61,23 @@ jobs:
         check-manifest -v
 
         pip install build
-        python -m build --sdist
+        python -m build
         cp dist/*.tar.gz myextension.tar.gz
         pip uninstall -y myextension jupyterlab
         rm -rf myextension
 
-    - uses: actions/upload-artifact@v2
+#    - uses: actions/upload-artifact@v2
+#      with:
+#        name: myextension-sdist
+#        path: myextension.tar.gz
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        name: myextension-sdist
-        path: myextension.tar.gz
+        files: |
+          dist/*.tar.gz
+          dist/*.whl
 
   test_isolated:
     needs: build

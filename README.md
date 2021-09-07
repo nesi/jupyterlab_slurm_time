@@ -2,7 +2,7 @@
 
 ![Github Actions Status](https://github.com/nesi/jupyterlab_slurm_time/workflows/Build/badge.svg)
 
-Display time remaining in Slurm job
+Display Slurm job remaining time in JupyterLab.
 
 
 This extension is composed of a Python package named `jupyterlab_slurm_time`

@@ -31,11 +31,12 @@ class RouteHandler(APIHandler):
                 array = time_left.split("-")
                 time_left_hms = array.pop()  # HH:MM:SS
                 days = int(array.pop()) if len(array) else 0
+                days_text = f"{days}d " if days > 0 else ""
                 array = time_left_hms.split(":")
                 array.pop()  # don't care about seconds
                 minutes = int(array.pop()) if len(array) else 0
                 hours = int(array.pop()) if len(array) else 0
-                time_left = f"{days*24+hours}h {minutes}m"
+                time_left = f"{days_text}{hours}h {minutes}m"
 
         self.finish(json.dumps({
             "data": time_left,
