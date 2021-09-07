@@ -1,7 +1,7 @@
 {
   "NotebookApp": {
     "nbserver_extensions": {
-      "slurmtime": true
+      "jupyterlab_slurm_time": true
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "slurmtime",
+  "name": "jupyterlab-slurm-time",
   "version": "0.1.0",
   "description": "Display time remaining in Slurm job",
   "keywords": [
@@ -7,9 +7,9 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/github_username/slurmtime",
+  "homepage": "https://github.com/nesi/jupyterlab-slurm-time",
   "bugs": {
-    "url": "https://github.com/github_username/slurmtime/issues"
+    "url": "https://github.com/nesi/jupyterlab-slurm-time/issues"
   },
   "license": "BSD-3-Clause",
   "author": {
@@ -25,7 +25,7 @@
   "style": "style/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/github_username/slurmtime.git"
+    "url": "https://github.com/nesi/jupyterlab-slurm-time.git"
   },
   "scripts": {
     "build": "jlpm run build:lib && jlpm run build:labextension:dev",
@@ -35,7 +35,8 @@
     "build:lib": "tsc",
     "clean": "jlpm run clean:lib",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
-    "clean:labextension": "rimraf slurmtime/labextension",
+    "clean:labextension": "rimraf jupyterlab_slurm_time/labextension",
+
     "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
     "eslint": "eslint . --ext .ts,.tsx --fix",
     "eslint:check": "eslint . --ext .ts,.tsx",
@@ -77,12 +78,12 @@
             "pip"
           ],
           "base": {
-            "name": "slurmtime"
+            "name": "jupyterlab_slurm_time"
           }
         }
     }, 
     "extension": true,
-    "outputDir": "slurmtime/labextension"
+    "outputDir": "jupyterlab_slurm_time/labextension"
   },
   "jupyter-releaser": {
     "hooks": {

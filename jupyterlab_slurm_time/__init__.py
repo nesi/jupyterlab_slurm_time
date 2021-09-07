@@ -22,7 +22,7 @@ from .handlers import setup_handlers
 
 def _jupyter_server_extension_points():
     return [{
-        "module": "slurmtime"
+        "module": "jupyterlab_slurm_time"
     }]
 
 
@@ -35,7 +35,7 @@ def _load_jupyter_server_extension(server_app):
         JupyterLab application instance
     """
     setup_handlers(server_app.web_app)
-    server_app.log.info("Registered slurmtime extension at URL path /slurmtime")
+    server_app.log.info("Registered jupyterlab-slurm-time extension at URL path /jupyterlab-slurm-time")
 
 # For backward compatibility with notebook server - useful for Binder/JupyterHub
 load_jupyter_server_extension = _load_jupyter_server_extension

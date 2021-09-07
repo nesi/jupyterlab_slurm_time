@@ -1,12 +1,12 @@
-# slurmtime
+# jupyterlab_slurm_time
 
-![Github Actions Status](https://github.com/github_username/slurmtime/workflows/Build/badge.svg)
+![Github Actions Status](https://github.com/nesi/jupyterlab_slurm_time/workflows/Build/badge.svg)
 
 Display time remaining in Slurm job
 
 
-This extension is composed of a Python package named `slurmtime`
-for the server extension and a NPM package named `slurmtime`
+This extension is composed of a Python package named `jupyterlab_slurm_time`
+for the server extension and a NPM package named `jupyterlab-slurm-time`
 for the frontend extension.
 
 
@@ -19,7 +19,7 @@ for the frontend extension.
 To install the extension, execute:
 
 ```bash
-pip install slurmtime
+pip install jupyterlab_slurm_time
 ```
 
 ## Uninstall
@@ -27,7 +27,7 @@ pip install slurmtime
 To remove the extension, execute:
 
 ```bash
-pip uninstall slurmtime
+pip uninstall jupyterlab_slurm_time
 ```
 
 
@@ -60,13 +60,13 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the slurmtime directory
+# Change directory to the jupyterlab_slurm_time directory
 # Install package in development mode
 pip install -e .
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Server extension must be manually installed in develop mode
-jupyter server extension enable slurmtime
+jupyter server extension enable jupyterlab_slurm_time
 # Rebuild extension Typescript source after making changes
 jlpm run build
 ```
@@ -92,13 +92,13 @@ jupyter lab build --minimize=False
 
 ```bash
 # Server extension must be manually disabled in develop mode
-jupyter server extension disable slurmtime
-pip uninstall slurmtime
+jupyter server extension disable jupyterlab_slurm_time
+pip uninstall jupyterlab_slurm_time
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `slurmtime` within that folder.
+folder is located. Then you can remove the symlink named `jupyterlab-slurm-time` within that folder.
 
 ### Packaging the extension
 

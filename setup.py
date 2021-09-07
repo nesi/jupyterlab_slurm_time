@@ -1,5 +1,5 @@
 """
-slurmtime setup
+jupyterlab_slurm_time setup
 """
 import json
 import sys
@@ -10,7 +10,7 @@ import setuptools
 HERE = Path(__file__).parent.resolve()
 
 # The name of the project
-name = "slurmtime"
+name = "jupyterlab_slurm_time"
 
 lab_path = (HERE / name.replace("-", "_") / "labextension")
 
@@ -20,16 +20,16 @@ ensured_targets = [
     str(lab_path / "static/style.js")
 ]
 
-labext_name = "slurmtime"
+labext_name = "jupyterlab-slurm-time"
 
 data_files_spec = [
     ("share/jupyter/labextensions/%s" % labext_name, str(lab_path.relative_to(HERE)), "**"),
     ("share/jupyter/labextensions/%s" % labext_name, str("."), "install.json"),
     ("etc/jupyter/jupyter_server_config.d",
-     "jupyter-config/server-config", "slurmtime.json"),
+     "jupyter-config/server-config", "jupyterlab_slurm_time.json"),
     # For backward compatibility with notebook server
     ("etc/jupyter/jupyter_notebook_config.d",
-     "jupyter-config/nb-config", "slurmtime.json"),
+     "jupyter-config/nb-config", "jupyterlab_slurm_time.json"),
 ]
 
 long_description = (HERE / "README.md").read_text()

@@ -25,7 +25,7 @@ class RouteHandler(APIHandler):
                 text=True,
             )
             if result.returncode == 0:
-                time_left = result.stdout.strip()
+                time_left = result.stdout.split("\n")[0].strip()
 
                 # nicer format from dd-hh:mm:ss
                 array = time_left.split("-")
@@ -46,6 +46,6 @@ def setup_handlers(web_app):
     host_pattern = ".*$"
 
     base_url = web_app.settings["base_url"]
-    route_pattern = url_path_join(base_url, "slurmtime", "get_time_remaining")
+    route_pattern = url_path_join(base_url, "jupyterlab-slurm-time", "get_time_remaining")
     handlers = [(route_pattern, RouteHandler)]
     web_app.add_handlers(host_pattern, handlers)

@@ -17,7 +17,7 @@ export async function requestAPI<T>(
   const settings = ServerConnection.makeSettings();
   const requestUrl = URLExt.join(
     settings.baseUrl,
-    'slurmtime', // API Namespace
+    'jupyterlab-slurm-time', // API Namespace
     endPoint
   );
 

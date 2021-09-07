@@ -28,7 +28,7 @@ class SlurmTimeRemainingWidget extends Widget {
     super();
 
     // create the text element
-    this.addClass('slurmtime-widget');
+    this.addClass('slurm-time-widget');
     this.textNode = document.createElement('div');
     this.textNode.textContent = '';
     this.node.appendChild(this.textNode);
@@ -61,7 +61,7 @@ class SlurmTimeRemainingWidget extends Widget {
       })
       .catch(reason => {
         console.error(
-          `The slurmtime server extension appears to be missing.\n${reason}`
+          `The jupyterlab_slurm_time server extension appears to be missing.\n${reason}`
         );
       });
   }
@@ -72,14 +72,14 @@ class SlurmTimeRemainingWidget extends Widget {
 }
 
 /**
- * Initialization data for the slurmtime extension.
+ * Initialization data for the jupyterlab-slurm-time extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'slurmtime:plugin',
+  id: 'jupyterlab-slurm-time:plugin',
   autoStart: true,
   requires: [ITopBar],
   activate: (app: JupyterFrontEnd, topBar: ITopBar) => {
-    console.log('JupyterLab extension slurmtime is activated!');
+    console.log('JupyterLab extension jupyterlab-slurm-time is activated!');
 
     const timeWidget = new SlurmTimeRemainingWidget();
     topBar.addItem('slurm-time-remaining', timeWidget);
