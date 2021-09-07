@@ -13,16 +13,32 @@ class RouteHandler(APIHandler):
     # Jupyter server
     @tornado.web.authenticated
     def get(self):
+        # get the slurm job id
         jobid = os.environ.get("SLURM_JOB_ID")
-        data = None
+        time_left = None
+        # if in a slurm job
         if jobid is not None:
-            result = subprocess.run(["squeue", "--noheader", "-O", "TimeLeft", "-j", jobid],
-                                    capture_output=True, text=True)
+            # request time remaining from squeue
+            result = subprocess.run(
+                ["squeue", "--noheader", "-O", "TimeLeft", "-j", jobid],
+                capture_output=True,
+                text=True,
+            )
             if result.returncode == 0:
-                data = result.stdout.strip()
+                time_left = result.stdout.strip()
+
+                # nicer format from dd-hh:mm:ss
+                array = time_left.split("-")
+                time_left_hms = array.pop()  # HH:MM:SS
+                days = int(array.pop()) if len(array) else 0
+                array = time_left_hms.split(":")
+                array.pop()  # don't care about seconds
+                minutes = int(array.pop()) if len(array) else 0
+                hours = int(array.pop()) if len(array) else 0
+                time_left = f"{days*24+hours}h {minutes}m"
 
         self.finish(json.dumps({
-            "data": data,
+            "data": time_left,
         }))
 
 

@@ -12,9 +12,9 @@ import { Poll } from '@lumino/polling';
 import { ITopBar } from 'jupyterlab-topbar';
 
 /**
- * Refresh interval for polling the time remaining
+ * Refresh interval for polling the time remaining (ms)
  */
-const REFRESH_INTERVAL = 5000;
+const REFRESH_INTERVAL = 60000;
 
 /**
  * A widget for displaying the time remaining
@@ -30,7 +30,7 @@ class SlurmTimeRemainingWidget extends Widget {
     // create the text element
     this.addClass('slurmtime-widget');
     this.textNode = document.createElement('div');
-    this.textNode.textContent = 'N/A';
+    this.textNode.textContent = '';
     this.node.appendChild(this.textNode);
 
     // do an initial update of the time remaining
@@ -50,8 +50,6 @@ class SlurmTimeRemainingWidget extends Widget {
   }
 
   async _updateTimeRemaining(): Promise<void> {
-    console.log('Slurm time update requested');
-
     requestAPI<any>('get_time_remaining')
       .then(data => {
         const time_text = data['data'];
