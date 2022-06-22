@@ -14,7 +14,7 @@ class RouteHandler(APIHandler):
     @tornado.web.authenticated
     def get(self):
         # get the slurm job id
-        jobid = os.environ.get("SLURM_JOB_ID")
+        jobid = os.getenv("SLURM_JOB_ID", os.getenv("JOB_ID"))
         time_left = None
         # if in a slurm job
         if jobid is not None:
